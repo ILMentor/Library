@@ -1,6 +1,16 @@
 package empire.of.lord.library.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String title;
     private String author;
     private String date;
@@ -9,12 +19,21 @@ public class Book {
 
     public Book(){}
 
-    public Book(String title, String author, String date, String genre, String description) {
+    public Book(int id, String title, String author, String date, String genre, String description) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.date = date;
         this.genre = genre;
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -60,11 +79,13 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", date='" + date + '\'' +
                 ", genre='" + genre + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
+
 }
