@@ -16,7 +16,7 @@ public class BookDAO {
     }
 
     public Book show(int id){
-        return null;
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Book.class, id);
     }
 
     public void create(Book book){
@@ -31,7 +31,11 @@ public class BookDAO {
         return null;
     }
 
-    public Book delete(int id){
-        return null;
+    public void delete(int id){
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.delete(session.get(Book.class, id));
+        tx1.commit();
+        session.close();
     }
 }
