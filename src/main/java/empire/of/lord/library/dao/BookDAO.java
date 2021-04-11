@@ -27,8 +27,12 @@ public class BookDAO {
         session.close();
     }
 
-    public Book update(int id){
-        return null;
+    public void update(Book updatedBook){
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.update(updatedBook);
+        tx1.commit();
+        session.close();
     }
 
     public void delete(int id){

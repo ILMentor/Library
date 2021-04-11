@@ -48,8 +48,8 @@ public class BooksController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable int id){
-        bookDAO.update(id);
+    public String update(@ModelAttribute Book updatedBook){
+        bookDAO.update(updatedBook);
         return "redirect:/books";
     }
 
