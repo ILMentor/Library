@@ -1,0 +1,6 @@
+package empire.of.lord.library.models;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface BookRepo extends CrudRepository<Book, Integer> {
+}

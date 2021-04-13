@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New anime</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/anime}" th:object="${anime}">
+    <label for="title">Write title: </label>
+    <input type="text" th:field="*{title}" id="title">
+    <br/>
+    <label for="author">Write author: </label>
+    <input type="text" th:field="*{dubbing}" id="author">
+    <br/>
+    <label for="date">Write date: </label>
+    <input type="text" th:field="*{dateTime}" id="date">
+    <br/>
+    <label for="description">Write description: </label>
+    <input type="text" th:field="*{description}" id="description">
+    <br/>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>
