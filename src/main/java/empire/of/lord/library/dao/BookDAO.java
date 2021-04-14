@@ -1,45 +1,40 @@
 package empire.of.lord.library.dao;
 
 import empire.of.lord.library.models.Book;
-import empire.of.lord.library.utils.HibernateSessionFactoryUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import empire.of.lord.library.models.BookRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Optional;
 
 @Component
 public class BookDAO{
 
-    public List<Book> showAll(){
-        return (List<Book>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Book").list();
+    private final BookRepo bookRepo;
+
+    @Autowired
+    public BookDAO(BookRepo bookRepo) {
+        this.bookRepo = bookRepo;
     }
 
-    public Book show(int id){
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Book.class, id);
+
+    public Iterable<Book> showAll(){
+        return bookRepo.findAll();
+    }
+
+    public Optional<Book> show(int id){
+        return bookRepo.findById(id);
     }
 
     public void create(Book book){
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(book);
-        tx1.commit();
-        session.close();
+        bookRepo.save(book);
     }
 
     public void update(Book updatedBook){
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.update(updatedBook);
-        tx1.commit();
-        session.close();
+        bookRepo.save(updatedBook);
     }
 
     public void delete(int id){
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.delete(session.get(Book.class, id));
-        tx1.commit();
-        session.close();
+        bookRepo.deleteById(id);
     }
 }

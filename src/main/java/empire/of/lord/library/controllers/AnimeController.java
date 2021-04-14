@@ -43,7 +43,7 @@ public class AnimeController {
 
     @GetMapping("/{id}")
     public String show(@PathVariable Long id, Model model){
-        model.addAttribute(animeDAO.show(id));
+        model.addAttribute("anime", animeDAO.show(id));
         return "anime/show";
     }
 

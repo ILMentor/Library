@@ -2,9 +2,6 @@ package empire.of.lord.library.dao;
 
 import empire.of.lord.library.models.Anime;
 import empire.of.lord.library.models.AnimeRepo;
-import empire.of.lord.library.utils.HibernateSessionFactoryUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

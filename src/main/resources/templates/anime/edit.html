@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit anime</title>
 </head>
 <body>
-<form th:method="patch" th:action="@{/anime/{id}(id = ${anime.getId()})}" th:object="${anime}">
+<form th:method="patch" th:action="@{/anime/{id}(id = ${anime.get().getId()})}" th:object="${anime}">
     <label for="title">Write title: </label>
-    <input type="text" th:field="*{title}" id="title">
+    <input type="text" th:field="*{get().title}" id="title">
     <br/>
-    <label for="author">Write author: </label>
-    <input type="text" th:field="*{dubbing}" id="author">
+    <label for="dubbing">Write dubbing: </label>
+    <input type="text" th:field="*{get().dubbing}" id="dubbing">
     <br/>
-    <label for="date">Write date: </label>
-    <input type="text" th:field="*{dateTime}" id="date">
+    <label for="dateTime">Write dateTime: </label>
+    <input type="text" th:field="*{get().dateTime}" id="dateTime">
     <br/>
     <label for="description">Write description: </label>
-    <input type="text" th:field="*{description}" id="description">
+    <input type="text" th:field="*{get().description}" id="description">
     <br/>
     <input type="submit" value="Save">
 </form>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>anime</title>
 </head>
 <body>
 <!--todo тут ошибка, когда я пытаюсь открыть аниме, оно выбивает ошибку-->
-<p th:text="${anime.getTitle()}">value</p>
-<p th:text="${anime.getDubbing()}">value</p>
-<p th:text="${anime.getDateTime()}">value</p>
-<p th:text="${anime.getDescription()}">value</p>
+<p th:text="${anime.get().getTitle()}">value</p>
+<p th:text="${anime.get().getDubbing()}">value</p>
+<p th:text="${anime.get().getDateTime()}">value</p>
+<p th:text="${anime.get().getDescription()}">value</p>
 
-<a th:href="@{/anime/{id}/edit(id = ${anime.getId()})}">Edit</a>
-<form th:method="delete" th:action="@{/anime/{id}(id = ${anime.getId()})}">
+<a th:href="@{/anime/{id}/edit(id = ${anime.get().getId()})}">Edit</a>
+<form th:method="delete" th:action="@{/anime/{id}(id = ${anime.get().getId()})}">
 <input type="submit" value="delete">
 </form>
 </body>
