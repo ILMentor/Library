@@ -5,18 +5,15 @@
     <title>Edit anime</title>
 </head>
 <body>
-<form th:method="patch" th:action="@{/anime/{id}(id = ${anime.get().getId()})}" th:object="${anime}">
+<form th:method="patch" th:action="@{/anime/{id}(id = ${anime.getId()})}" th:object="${anime}">
     <label for="title">Write title: </label>
-    <input type="text" th:field="*{get().title}" id="title">
+    <input type="text" th:field="*{title}" id="title">
     <br/>
     <label for="dubbing">Write dubbing: </label>
-    <input type="text" th:field="*{get().dubbing}" id="dubbing">
-    <br/>
-    <label for="dateTime">Write dateTime: </label>
-    <input type="text" th:field="*{get().dateTime}" id="dateTime">
+    <input type="text" th:field="*{dubbing}" id="dubbing">
     <br/>
     <label for="description">Write description: </label>
-    <input type="text" th:field="*{get().description}" id="description">
+    <input type="text" th:field="*{description}" id="description">
     <br/>
     <input type="submit" value="Save">
 </form>

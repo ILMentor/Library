@@ -17,7 +17,6 @@ public class BookDAO{
         this.bookRepo = bookRepo;
     }
 
-
     public Iterable<Book> showAll(){
         return bookRepo.findAll();
     }

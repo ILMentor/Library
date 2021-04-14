@@ -36,7 +36,7 @@ public class AnimeController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(@PathVariable Long id, Model model){
+    public String edit(@PathVariable Long id, Model model, @ModelAttribute("anime") Anime anime){
         model.addAttribute("anime", animeDAO.show(id));
         return "anime/edit";
     }
