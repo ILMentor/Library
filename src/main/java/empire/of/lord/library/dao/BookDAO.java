@@ -5,8 +5,6 @@ import empire.of.lord.library.models.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class BookDAO{
 
@@ -21,8 +19,8 @@ public class BookDAO{
         return bookRepo.findAll();
     }
 
-    public Optional<Book> show(int id){
-        return bookRepo.findById(id);
+    public Book show(Long id){
+        return bookRepo.getOne(id);
     }
 
     public void create(Book book){
@@ -33,7 +31,7 @@ public class BookDAO{
         bookRepo.save(updatedBook);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         bookRepo.deleteById(id);
     }
 }

@@ -36,13 +36,13 @@ public class BooksController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(@PathVariable int id, Model model, @ModelAttribute("book") Book book){
+    public String edit(@PathVariable Long id, Model model, @ModelAttribute("book") Book book){
         model.addAttribute("book", bookDAO.show(id));
         return "books/edit";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable int id, Model model){
+    public String show(@PathVariable Long id, Model model){
         model.addAttribute("book", bookDAO.show(id));
         return "books/show";
     }
@@ -54,7 +54,7 @@ public class BooksController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable Long id){
         bookDAO.delete(id);
         return "redirect:/books";
     }

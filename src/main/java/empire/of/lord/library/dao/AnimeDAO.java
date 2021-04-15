@@ -5,8 +5,6 @@ import empire.of.lord.library.models.AnimeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class AnimeDAO {
 
@@ -21,8 +19,8 @@ public class AnimeDAO {
         return animeRepo.findAll();
     }
 
-    public Optional<Anime> show(Long id){
-        return animeRepo.findById(id);
+    public Anime show(Long id){
+        return animeRepo.getOne(id);
     }
 
     public void create(Anime anime){

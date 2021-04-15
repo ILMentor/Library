@@ -1,5 +1,7 @@
 package empire.of.lord.library.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,16 +10,19 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String title;
     private String author;
     private String date;
     private String genre;
+
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String description;
 
     public Book(){}
 
-    public Book(int id, String title, String author, String date, String genre, String description) {
+    public Book(Long id, String title, String author, String date, String genre, String description) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -26,11 +31,11 @@ public class Book {
         this.description = description;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

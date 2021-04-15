@@ -1,8 +1,11 @@
 package empire.of.lord.library.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@SuppressWarnings("unused")
 @Entity
 public class Anime {
 
@@ -12,6 +15,9 @@ public class Anime {
     private String title;
     private String dubbing;
     private LocalDateTime dateTime;
+
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String description;
 
     public Anime(){}
